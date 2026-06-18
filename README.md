@@ -1,6 +1,6 @@
 # Objetivo do Projeto
 
-Esse projeto foi desenvolvido como avaliação da disciplina programação para automação de testes do curso de Post-Graduação em Automação de Testes (PGATS) promovido pelo Júlio de Lima.
+Esse projeto foi desenvolvido como avaliação da disciplina programação para automação de testes do curso de Pós-Graduação em Automação de Testes (PGATS) promovido pelo Júlio de Lima.
 
 
 # Serviço de Pagamento
@@ -75,3 +75,5 @@ pgats-servico-de-pagamento/
 
 - **mocha**: Framework de testes
 - **assert**: Módulo nativo do Node.js para assertions
+
+
