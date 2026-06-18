@@ -1,6 +1,9 @@
 # Objetivo do Projeto
 
-Esse projeto foi desenvolvido como avaliação da disciplina programação para automação de testes do curso de Pós-Graduação em Automação de Testes (PGATS) promovido pelo Júlio de Lima.
+Esse projeto foi desenvolvido como avaliação da disciplina programação para automação de testes do curso de Pós-Graduação em Automação de Testes (PGATS) promovido pelo Júlio de Lima. 
+
+
+Mais informações sobre o curso podem ser encontradas no site oficial: [https://pgats.com.br//](https://pgats.com.br/).
 
 
 # Serviço de Pagamento
