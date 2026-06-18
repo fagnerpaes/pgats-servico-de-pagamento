@@ -1,9 +1,11 @@
 # Objetivo do Projeto
 
-Esse projeto foi desenvolvido como avaliação da disciplina programação para automação de testes do curso de Pós-Graduação em Automação de Testes (PGATS) promovido pelo Júlio de Lima. 
+Este projeto foi desenvolvido inicialmente como avaliação da disciplina **Programação para Automação de Testes** do curso de **Pós-Graduação em Automação de Testes (PGATS)**, promovido pelo [**Júlio de Lima**](https://www.linkedin.com/in/juliodelimas).
+
+Posteriormente, o mesmo projeto passou a ser utilizado também como avaliação da disciplina **Integração Contínua para Automação de Testes**, ministrada pelo [**Professor Goku — João Vitor dos Santos**](https://www.linkedin.com/in/qakarotto/). Assim, o repositório passou a contemplar tanto a implementação da solução quanto sua evolução para atender aos requisitos da disciplina de integração contínua.
 
 
-Mais informações sobre o curso podem ser encontradas no site oficial: [https://pgats.com.br//](https://pgats.com.br/).
+Mais informações sobre o curso podem ser encontradas no site oficial: [https://pgats.com.br/](https://pgats.com.br/).
 
 
 # Serviço de Pagamento
