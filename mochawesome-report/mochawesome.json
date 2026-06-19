@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-06-19T16:23:50.112Z",
+    "end": "2026-06-19T16:23:50.116Z",
+    "duration": 4,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c25e4746-cc30-4053-bbd0-5baffad33ecc",
+      "title": "",
+      "fullFile": "C:\\Projetos\\pgats\\programacao-automacao-testes\\pgats-servico-de-pagamento\\test\\servicoDePagamento.test.js",
+      "file": "\\test\\servicoDePagamento.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e317333e-3212-4752-a419-384e3e9e5762",
+          "title": "Classe de Servico de Pagamento",
+          "fullFile": "C:\\Projetos\\pgats\\programacao-automacao-testes\\pgats-servico-de-pagamento\\test\\servicoDePagamento.test.js",
+          "file": "\\test\\servicoDePagamento.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validar que o pagamento é adicionado como último pagamento da lista com categoria cara",
+              "fullTitle": "Classe de Servico de Pagamento Validar que o pagamento é adicionado como último pagamento da lista com categoria cara",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\n\n//Act\nservicoDePagamento.realizarPagamento('0987-7656-3476', 'EmpresaA', 150.00);\nservicoDePagamento.realizarPagamento('1234-5678-9012', 'EmpresaB', 50.00);\nservicoDePagamento.realizarPagamento('5678-9012-3456', 'EmpresaC', 100.00);\nservicoDePagamento.realizarPagamento('0987-7656-3475', 'Samar', 156.87);\nconst ultimoPagamento = servicoDePagamento.consultarUltimoPagamento();\n\n//Assert\nassert.strictEqual(ultimoPagamento.codigoBarras, '0987-7656-3475');\nassert.strictEqual(ultimoPagamento.empresa, 'Samar');\nassert.strictEqual(ultimoPagamento.valor, 156.87);\nassert.strictEqual(ultimoPagamento.categoria, 'cara');\nconsole.log(ultimoPagamento);",
+              "err": {},
+              "uuid": "1f659ddc-6e52-44e0-bcc2-029433c93299",
+              "parentUUID": "e317333e-3212-4752-a419-384e3e9e5762",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validar que o pagamento é adicionado como último pagamento da lista com categoria padrão",
+              "fullTitle": "Classe de Servico de Pagamento Validar que o pagamento é adicionado como último pagamento da lista com categoria padrão",
+              "timedOut": false,
+              "duration": 1,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\n\n//Act\nservicoDePagamento.realizarPagamento('0987-7656-3476', 'EmpresaA', 150.00);\nservicoDePagamento.realizarPagamento('1234-5678-9012', 'EmpresaB', 50.00);\nservicoDePagamento.realizarPagamento('5678-9012-3456', 'EmpresaC', 100.00);\nservicoDePagamento.realizarPagamento('1234-5678-9012', 'EmpresaX', 50.00);\nconst ultimoPagamento = servicoDePagamento.consultarUltimoPagamento();\n\n//Assert\nassert.strictEqual(ultimoPagamento.codigoBarras, '1234-5678-9012');\nassert.strictEqual(ultimoPagamento.empresa, 'EmpresaX');\nassert.strictEqual(ultimoPagamento.valor, 50.00);\nassert.strictEqual(ultimoPagamento.categoria, 'padrão');\nconsole.log(ultimoPagamento);",
+              "err": {},
+              "uuid": "822ee811-2702-451a-a4ed-7a02f14cb17b",
+              "parentUUID": "e317333e-3212-4752-a419-384e3e9e5762",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validar que o pagamento é adicionado como último pagamento da lista com categoria padrão com valor exatamente 100.00",
+              "fullTitle": "Classe de Servico de Pagamento Validar que o pagamento é adicionado como último pagamento da lista com categoria padrão com valor exatamente 100.00",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\n//Act\nservicoDePagamento.realizarPagamento('0987-7656-3476', 'EmpresaA', 150.00);\nservicoDePagamento.realizarPagamento('1234-5678-9012', 'EmpresaB', 50.00);\nservicoDePagamento.realizarPagamento('5678-9012-3456', 'EmpresaC', 100.00);\nservicoDePagamento.realizarPagamento('5678-9012-3456', 'EmpresaY', 100.00);\nconst ultimoPagamento = servicoDePagamento.consultarUltimoPagamento();\n//Assert\nassert.strictEqual(ultimoPagamento.codigoBarras, '5678-9012-3456');\nassert.strictEqual(ultimoPagamento.empresa, 'EmpresaY');\nassert.strictEqual(ultimoPagamento.valor, 100.00);\nassert.strictEqual(ultimoPagamento.categoria, 'padrão');\nconsole.log(ultimoPagamento);",
+              "err": {},
+              "uuid": "3f00c61c-9dfb-4b0e-aa41-3e2c700e5594",
+              "parentUUID": "e317333e-3212-4752-a419-384e3e9e5762",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validar que o método de consulta retorna mensagem quando não há pagamentos",
+              "fullTitle": "Classe de Servico de Pagamento Validar que o método de consulta retorna mensagem quando não há pagamentos",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();        \n//Act\nconst ultimoPagamento = servicoDePagamento.consultarUltimoPagamento();\n//Assert\nassert.strictEqual(ultimoPagamento, 'Não existem pagamentos registrados');",
+              "err": {},
+              "uuid": "b6103b61-2d35-4267-80a0-62a79fb5057f",
+              "parentUUID": "e317333e-3212-4752-a419-384e3e9e5762",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1f659ddc-6e52-44e0-bcc2-029433c93299",
+            "822ee811-2702-451a-a4ed-7a02f14cb17b",
+            "3f00c61c-9dfb-4b0e-aa41-3e2c700e5594",
+            "b6103b61-2d35-4267-80a0-62a79fb5057f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.6"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}

@@ -48,9 +48,10 @@ jobs:
         uses: actions/setup-node@v4 # Ação do GitHub para configurar o ambiente Node.js
         with:
           node-version: 24.x # Especifica a versão do Node.js a ser instalada
+          cache: 'npm' # Habilita o cache para as dependências do npm, melhorando a performance em execuções subsequentes
 
       - name: Instalar dependencias # Passo para instalar as dependências do projeto
-        run: npm install # Comando para instalar as dependências listadas no package.json
+        run: npm ci # Comando para instalar as dependências do projeto de forma limpa, garantindo que o ambiente esteja consistente com o package-lock.json 
 
       - name: Executar os testes # Passo para executar os testes automatizados
         run: npm test # Comando para executar os testes definidos no package.json
