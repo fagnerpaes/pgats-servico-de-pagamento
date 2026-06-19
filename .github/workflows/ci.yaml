@@ -1,0 +1,66 @@
+# Ojetivo
+
+# Desenvolver uma pipeline de integração contínua utilizando GitHub Actions para um projeto com testes automatizados, contemplando:
+# - Execução por push.
+# - Execução manual.
+# - Execução agendada (schedule).
+# - Geração de relatório de testes.
+# - Armazenamento/publicação do relatório na pipeline.
+# - Criação de um README explicando a solução e os conceitos utilizados.
+
+# Preferencialmente utilizar um projeto desenvolvido em outra disciplina da pós-graduação.
+
+# Requisitos
+# - Trabalho individual.
+# - Utilizar GitHub Actions.
+# - Pipeline executando com sucesso.
+# - Testes automatizados executando com sucesso.
+# - Relatório de execução armazenado na pipeline.
+# - Aplicação correta dos conceitos estudados.
+# - Uso adequado das ferramentas escolhidas.
+# - Documentação completa no README.
+
+
+#Integração contínua com GitHub Actions
+
+# Nome da pipeline
+name: CI Pipeline
+
+# gatilhos para execução da pipeline
+on:
+  #push:
+   # branches: # Especifica que a pipeline deve ser executada quando houver um push para a branch "main"
+   #  - main
+  workflow_dispatch: # Permite execução manual da pipeline
+  #schedule: # Agendamento para execução periódica (exemplo: toda sexta-feira às 17h)
+  #  - cron: '0 17 * * 5' # 0 significa minuto, 17 significa hora, * significa qualquer dia do mês, * significa qualquer mês, 5 significa sexta-feira
+
+# Definição das tarefas da pipeline
+jobs:
+  test: # Nome do job
+    runs-on: ubuntu-latest # Ambiente de execução (Ubuntu mais recente)
+    steps: # Passos a serem executados no job
+
+      - name: Checkout codigo fonte # Passo para fazer checkout do código-fonte do repositório (clone no projeto)
+        uses: actions/checkout@v4 # Ação do GitHub para fazer checkout do código do repositório 
+        
+      - name: Configuracao do Node.js # Passo para instalar e configurar o ambiente Node.js
+        uses: actions/setup-node@v4 # Ação do GitHub para configurar o ambiente Node.js
+        with:
+          node-version: 24.x # Especifica a versão do Node.js a ser instalada
+
+      - name: Instalar dependencias # Passo para instalar as dependências do projeto
+        run: npm install # Comando para instalar as dependências listadas no package.json
+
+      - name: Executar os testes # Passo para executar os testes automatizados
+        run: npm test # Comando para executar os testes definidos no package.json
+        
+      - name: Gerar relatorio de testes # Passo para gerar o relatório de testes
+        run: npm run test:report # Comando para gerar o relatório de testes (deve estar definido no package.json)
+
+      - name: Publicar relatorio de testes # Passo para publicar o relatório de testes como artefato da pipeline
+        uses: actions/upload-artifact@v3 # Ação do GitHub para fazer upload de artefatos
+        with: 
+          name: test-report # Nome do artefato (relatório de testes)
+
+
