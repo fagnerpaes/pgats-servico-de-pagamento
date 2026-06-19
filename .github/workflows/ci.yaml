@@ -28,9 +28,9 @@ name: CI Pipeline
 
 # gatilhos para execução da pipeline
 on:
-  #push:
-   # branches: # Especifica que a pipeline deve ser executada quando houver um push para a branch "main"
-   #  - main
+  push:
+   branches: # Especifica que a pipeline deve ser executada quando houver um push para a branch "main"
+     - main
   workflow_dispatch: # Permite execução manual da pipeline
   #schedule: # Agendamento para execução periódica (exemplo: toda sexta-feira às 17h)
   #  - cron: '0 17 * * 5' # 0 significa minuto, 17 significa hora, * significa qualquer dia do mês, * significa qualquer mês, 5 significa sexta-feira
