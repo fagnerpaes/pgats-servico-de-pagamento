@@ -60,7 +60,7 @@ jobs:
         run: npm run test:report # Comando para gerar o relatório de testes (deve estar definido no package.json)
 
       - name: Publicar relatorio de testes # Passo para publicar o relatório de testes como artefato da pipeline
-        uses: actions/upload-artifact@v4 # Ação do GitHub para fazer upload de artefatos
+        uses: actions/upload-artifact@v7 # Ação do GitHub para fazer upload de artefatos
         with: 
           name: Relatorio de Testes Mochawesome # Nome do artefato (relatório de testes)
           path: mochawesome-report # Caminho para o diretório onde o relatório de testes foi gerado (deve ser consistente com a configuração do mochawesome)
