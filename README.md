@@ -68,6 +68,7 @@ pgats-servico-de-pagamento/
 │       └── ci.yaml                     # Workflow de CI/CD com GitHub Actions
 ├── docs/
 │   └── screenshots/                    # Evidências das execuções da pipeline
+|   └── reports/                        # Relatórios de testes armazenados apenas para avaliação da disciplina de Integração Contínua  
 ├── mochawesome-report/                 # Relatórios de testes gerados
 │   ├── mochawesome.html                # Relatório HTML dos testes
 │   ├── mochawesome.json                # Relatório JSON dos testes
@@ -88,6 +89,7 @@ pgats-servico-de-pagamento/
 
 - **`docs/`**: Documentação adicional do projeto
   - `screenshots/`: Armazena as evidências (print screens) das execuções da pipeline
+  - `reports/`: Armazena os relatórios de testes gerados durante a avaliação da disciplina de Integração Contínua 
 
 - **`mochawesome-report/`**: Relatórios de testes gerados automaticamente
   - `mochawesome.html`: Relatório interativo em HTML
@@ -99,7 +101,7 @@ pgats-servico-de-pagamento/
 
 - **`test/`**: Testes automatizados
   - `servicoDePagamento.test.js`: Suite de testes unitários com Mocha
-```
+
 
 ## Requisitos
 
