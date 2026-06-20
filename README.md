@@ -63,12 +63,42 @@ Os testes são executados com **Mocha** e **Node Assert**, validando:
 
 ```
 pgats-servico-de-pagamento/
+├── .github/
+│   └── workflows/
+│       └── ci.yaml                     # Workflow de CI/CD com GitHub Actions
+├── docs/
+│   └── screenshots/                    # Evidências das execuções da pipeline
+├── mochawesome-report/                 # Relatórios de testes gerados
+│   ├── mochawesome.html                # Relatório HTML dos testes
+│   ├── mochawesome.json                # Relatório JSON dos testes
+│   └── assets/                         # Arquivos de estilo e scripts
 ├── src/
-│   └── servicoDePagamento.js    # Classe principal
+│   └── servicoDePagamento.js           # Classe principal
 ├── test/
-│   └── servicoDePagamento.test.js   # Testes unitários
-├── package.json
-└── README.md
+│   └── servicoDePagamento.test.js      # Testes unitários
+├── package.json                        # Configuração do projeto e dependências
+├── package-lock.json                   # Lock file do npm
+└── README.md                           # Documentação do projeto
+```
+
+**Descrição dos Diretórios:**
+
+- **`.github/workflows/`**: Contém os arquivos de configuração do GitHub Actions
+  - `ci.yaml`: Define a pipeline de integração contínua com os gatilhos (push, manual, agendado), passos e artefatos
+
+- **`docs/`**: Documentação adicional do projeto
+  - `screenshots/`: Armazena as evidências (print screens) das execuções da pipeline
+
+- **`mochawesome-report/`**: Relatórios de testes gerados automaticamente
+  - `mochawesome.html`: Relatório interativo em HTML
+  - `mochawesome.json`: Dados brutos dos testes em formato JSON
+  - `assets/`: Estilos CSS e scripts JavaScript para o relatório
+
+- **`src/`**: Código fonte da aplicação
+  - `servicoDePagamento.js`: Implementação da classe de pagamentos
+
+- **`test/`**: Testes automatizados
+  - `servicoDePagamento.test.js`: Suite de testes unitários com Mocha
 ```
 
 ## Requisitos
@@ -143,7 +173,6 @@ Esta seção documenta as evidências das diferentes formas de execução da pip
 
 ![Execução por Push](./docs/screenshots/exec-por-push.png)
 
-**Repositório**: [Visualizar no GitHub](https://github.com/) *(adicionar link do repositório)*
 
 ---
 
@@ -174,7 +203,7 @@ Esta seção documenta as evidências das diferentes formas de execução da pip
 
 **Configuração Cron**: `'18 17 * * 5'`
 - Minuto: 18
-- Hora: 17 (5:18 PM UTC)
+- Hora: 17
 - Dia do mês: * (qualquer dia)
 - Mês: * (qualquer mês)
 - Dia da semana: 5 (sexta-feira)
@@ -191,8 +220,6 @@ Esta seção documenta as evidências das diferentes formas de execução da pip
 5. Extraia o arquivo ZIP
 6. Abra `mochawesome.html` em um navegador web
 
-**Localmente no Repositório:**
-1. Abra o arquivo [mochawesome-report/mochawesome.html](./mochawesome-report/mochawesome.html) diretamente
-2. Visualize o relatório interativo com todos os detalhes dos testes
+Observação: Caso a retenção do artefato tenha expirado, o relatório pode ser encontrado na pasta do projeto .\docs\reports\    
 
 ---
