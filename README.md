@@ -82,3 +82,117 @@ pgats-servico-de-pagamento/
 - **assert**: Módulo nativo do Node.js para assertions
 
 
+## Integração Contínua - GitHub Actions
+
+### Visão Geral
+
+Este projeto implementa uma pipeline de Integração Contínua (CI) utilizando **GitHub Actions**, conforme requisitos da disciplina de **Integração Contínua para Automação de Testes**. A pipeline automatiza a execução de testes e geração de relatórios em cada alteração do código.
+
+### Arquivo de Configuração
+
+O arquivo de configuração está localizado em `.github/workflows/ci.yaml` e define a pipeline de CI com as seguintes características:
+
+**Gatilhos de Execução:**
+- ✅ **Push para branch main**: A pipeline executa automaticamente quando há um push na branch principal
+- ✅ **Execução Manual**: Permite disparar a pipeline manualmente via `workflow_dispatch`
+- ✅ **Agendamento**: Executa automaticamente toda sexta-feira às 17h18 (cron: `'18 17 * * 5'`)
+
+**Passos da Pipeline:**
+
+1. **Checkout do Código**: Faz o clone do repositório usando `actions/checkout@v4`
+2. **Configuração do Node.js**: Instala Node.js versão 24.x com cache de dependências npm via `actions/setup-node@v6`
+3. **Instalação de Dependências**: Executa `npm ci` para instalar as dependências de forma consistente
+4. **Execução dos Testes**: Executa `npm test` para rodar todos os testes automatizados
+5. **Geração de Relatório**: Executa `npm run test:report` para gerar relatório com Mochawesome
+6. **Publicação de Artefatos**: Realiza o upload da pasta `mochawesome-report` como artefato da pipeline com retenção de 7 dias via `actions/upload-artifact@v7`
+
+**Ambiente de Execução:**
+- Sistema operacional: Ubuntu (ubuntu-latest)
+- Cache habilitado para as dependências npm, melhorando a performance em execuções subsequentes
+
+### Atendimento dos Objetivos
+
+| Objetivo | Status | Descrição |
+|----------|--------|-----------|
+| Execução por push | ✅ Atendido | Pipeline dispara automaticamente em push para a branch main |
+| Execução manual | ✅ Atendido | `workflow_dispatch` permite execução manual da pipeline |
+| Execução agendada | ✅ Atendido | Cron configurado para toda sexta-feira às 17h18 |
+| Geração de relatório de testes | ✅ Atendido | `npm run test:report` gera relatório Mochawesome em JSON e HTML |
+| Armazenamento/publicação do relatório | ✅ Atendido | Artefato publicado via GitHub Actions com 7 dias de retenção |
+| Documentação completa | ✅ Atendido | README explicando a solução e os conceitos utilizados |
+
+### Conceitos Utilizados
+
+- **CI/CD (Continuous Integration)**: Automatização de testes e builds em cada alteração
+- **GitHub Actions**: Plataforma de automação nativa do GitHub
+- **Workflows**: Fluxos de trabalho automatizados disparados por eventos
+- **Artefatos**: Arquivos gerados pela pipeline que podem ser armazenados e recuperados
+- **Cron Jobs**: Agendamento de tarefas em intervalos específicos
+
+---
+
+## Evidências das Execuções da Pipeline
+
+Esta seção documenta as evidências das diferentes formas de execução da pipeline de CI/CD.
+
+### 1. Execução por Push
+
+**Descrição**: A pipeline é acionada automaticamente quando há um push para a branch `main`.
+
+**Print Screen da Execução por Push:**
+
+![Execução por Push](./docs/screenshots/exec-por-push.png)
+
+**Repositório**: [Visualizar no GitHub](https://github.com/) *(adicionar link do repositório)*
+
+---
+
+### 2. Execução Manual (Workflow Dispatch)
+
+**Descrição**: A pipeline pode ser disparada manualmente através da aba Actions do repositório.
+
+**Print Screen da Execução Manual:**
+
+![Execução Manual](./docs/screenshots/exec-manual.png)
+
+**Como Executar Manualmente:**
+1. Acesse a aba **Actions** no repositório GitHub
+2. Selecione o workflow **CI Pipeline**
+3. Clique em **Run workflow**
+4. Selecione a branch (main)
+5. Clique em **Run workflow**
+
+---
+
+### 3. Execução Agendada (Scheduled)
+
+**Descrição**: A pipeline executa automaticamente toda sexta-feira às 17h18 UTC conforme configuração do cron job.
+
+**Print Screen da Execução Agendada:**
+
+![Execução Agendada](./docs/screenshots/exec-agendada.png)
+
+**Configuração Cron**: `'18 17 * * 5'`
+- Minuto: 18
+- Hora: 17 (5:18 PM UTC)
+- Dia do mês: * (qualquer dia)
+- Mês: * (qualquer mês)
+- Dia da semana: 5 (sexta-feira)
+
+---
+
+### Como Acessar os Relatórios Detalhados
+
+**Via GitHub Actions (Recomendado):**
+1. Acesse a aba **Actions** do repositório
+2. Clique na execução desejada
+3. Role para baixo até a seção **Artifacts**
+4. Clique em **Relatorio de Testes Mochawesome** para fazer o download
+5. Extraia o arquivo ZIP
+6. Abra `mochawesome.html` em um navegador web
+
+**Localmente no Repositório:**
+1. Abra o arquivo [mochawesome-report/mochawesome.html](./mochawesome-report/mochawesome.html) diretamente
+2. Visualize o relatório interativo com todos os detalhes dos testes
+
+---
